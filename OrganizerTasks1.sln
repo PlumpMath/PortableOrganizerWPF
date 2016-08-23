@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizerTasks1.Model", "OrganizerTasks1\OrganizerTasks1.Model.csproj", "{D7CE6751-A6EA-42BA-8C37-385747C25E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizerTask1.Model.Test", "OrganizerTask1.Model.Test\OrganizerTask1.Model.Test.csproj", "{6C7BF04E-B6F4-481C-B807-1BB9EB271B62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizerTask1.UI", "OrganizerTask1.UI\OrganizerTask1.UI.csproj", "{8B71EB67-6473-4669-B663-6EB549D0EA56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7CE6751-A6EA-42BA-8C37-385747C25E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CE6751-A6EA-42BA-8C37-385747C25E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CE6751-A6EA-42BA-8C37-385747C25E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CE6751-A6EA-42BA-8C37-385747C25E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7BF04E-B6F4-481C-B807-1BB9EB271B62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7BF04E-B6F4-481C-B807-1BB9EB271B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7BF04E-B6F4-481C-B807-1BB9EB271B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7BF04E-B6F4-481C-B807-1BB9EB271B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B71EB67-6473-4669-B663-6EB549D0EA56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B71EB67-6473-4669-B663-6EB549D0EA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B71EB67-6473-4669-B663-6EB549D0EA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B71EB67-6473-4669-B663-6EB549D0EA56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
