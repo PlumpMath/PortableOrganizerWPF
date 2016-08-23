@@ -31,7 +31,7 @@ namespace OrganizerTask1.UI.ViewModels
                     CurrentVM = NotesViewModel;
                     break;
                 default:
-                    CurrentVM = TasksViewModel;
+                    CurrentVM = null;
                     break;
             }
         }

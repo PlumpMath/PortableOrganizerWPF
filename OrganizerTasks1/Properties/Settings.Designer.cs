@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OrganizerTasks1.Model.Properties {
+namespace OrganizerTasks1.DAL.DAL.Model.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
