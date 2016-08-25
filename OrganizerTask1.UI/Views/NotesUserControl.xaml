@@ -10,6 +10,7 @@
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="..\Views\DataTemplates\NoteDataTemplate.xaml"/>
+                    <ResourceDictionary Source="..\Views\Styles\ButtonCollectionControlStyle.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
@@ -20,34 +21,20 @@
         </Grid.RowDefinitions>
 
         <ListBox x:Name="notesControl"
-                      Grid.Row="0" 
-                      Margin="30, 10"
-                      VerticalAlignment="Top"
-                      ItemsSource="{Binding Path=Entities}"
-                      >
-            <!--<ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical" Width="200"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>-->
-            
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" 
-                        VerticalAlignment="Center"
-                                />
-                    
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-
-        </ListBox>
+                        Grid.Row="0" 
+                        Margin="30, 10"
+                        VerticalAlignment="Top"
+                        ItemsSource="{Binding Path=Entities}"
+                        SelectedItem="{Binding Path=SelectedEntity}"
+                        HorizontalContentAlignment="Stretch"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        BorderBrush="Transparent"
+                      />
         
         <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
-            <Button  Content="New" Width="80" Margin="10" />
-            <Button  Content="Edit" Width="80" Margin="10" />
-            <Button  Content="Close" Width="80" Margin="10" />
+            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="New" Command="{Binding Path=NewCommand}"/>
+            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Edit" />
+            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Delete" Command="{Binding Path=DeleteCommand}"/>
         </WrapPanel>
         
     </Grid>

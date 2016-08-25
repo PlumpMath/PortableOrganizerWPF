@@ -23,17 +23,16 @@
                            Text="{Binding Name}" 
                            Margin="6, 6" 
                            VerticalAlignment="Top"
-                           HorizontalAlignment="Center"
                            TextAlignment="Center"
                            Foreground="White" 
-                           TextWrapping="WrapWithOverflow"
+                           TextWrapping="Wrap"
                            />
                 <TextBlock Grid.Column="1" x:Name="noteDescription" 
                            Text="{Binding Description}" 
                            Margin="6, 6" 
                            VerticalAlignment="Center" 
                            Foreground="White" 
-                           TextWrapping="WrapWithOverflow"
+                           TextWrapping="Wrap"
                            />
                 
             </Grid>

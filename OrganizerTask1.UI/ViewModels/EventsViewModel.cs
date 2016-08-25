@@ -15,7 +15,7 @@ namespace OrganizerTask1.UI.ViewModels
         {
             foreach (var eventData in _dataProvider.Events)
             {
-                base.Entities.Add(new EventViewModel(eventData));
+                Entities.Add(new EventViewModel(eventData));
             }
         }
     }

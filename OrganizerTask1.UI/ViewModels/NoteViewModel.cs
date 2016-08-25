@@ -4,7 +4,7 @@ namespace OrganizerTask1.UI.ViewModels
 {
     public class NoteViewModel : ViewModelBase
     {
-        private readonly Note _note;
+        public readonly Note _note;
 
         public NoteViewModel(Note note)
         {

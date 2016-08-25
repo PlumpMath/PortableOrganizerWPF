@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using OrganizerTasks1;
 using OrganizerTasks1.DAL;
 
@@ -7,7 +8,7 @@ namespace OrganizerTask1.UI.ViewModels
     public abstract class CollectionViewModel<T> : ViewModelBase where T: class
     {
         protected readonly IDataProvider _dataProvider;
-        protected IList<T> _entities = new List<T>();
+        protected ObservableCollection<T> _entities = new ObservableCollection<T>();
 
         public CollectionViewModel(IDataProvider dataProvider)
         {
@@ -17,7 +18,7 @@ namespace OrganizerTask1.UI.ViewModels
 
         protected abstract void PopulateData();
 
-        public IList<T> Entities
+        public ObservableCollection<T> Entities
         {
             get { return _entities; }
         }
