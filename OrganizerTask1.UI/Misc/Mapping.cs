@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using OrganizerTask1.UI.ViewModels;
-using OrganizerTasks1.Model;
+﻿//using AutoMapper;
+//using OrganizerTask1.UI.ViewModels;
+//using OrganizerTasks1.Model;
 
 namespace OrganizerTask1.UI.Misc
 {

@@ -1,15 +1,6 @@
-﻿using AutoMapper;
-using OrganizerTask1.UI.ViewModels;
-using OrganizerTasks1.Model;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using Microsoft.Practices.Unity;
 using OrganizerTask1.UI.Misc;
-using OrganizerTasks1;
 using OrganizerTasks1.DAL;
 
 namespace OrganizerTask1.UI
