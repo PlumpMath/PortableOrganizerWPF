@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:OrganizerTask1.UI.ViewModels">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="..\Styles\NotesElementBorderStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
+        
+        <DataTemplate.Resources>
+            
+        </DataTemplate.Resources>
+
+        <Border x:Name="noteArea" Style="{StaticResource NoteBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" x:Name="noteName" 
+                           Text="{Binding Name}" 
+                           Margin="6, 6" 
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           Foreground="White" 
+                           TextWrapping="WrapWithOverflow"
+                           />
+                <TextBlock Grid.Column="1" x:Name="noteDescription" 
+                           Text="{Binding Description}" 
+                           Margin="6, 6" 
+                           VerticalAlignment="Center" 
+                           Foreground="White" 
+                           TextWrapping="WrapWithOverflow"
+                           />
+                
+            </Grid>
+            
+        </Border>
+        
+    </DataTemplate>
+    
+</ResourceDictionary>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OrganizerTasks1.Model;
+﻿using OrganizerTasks1.Model;
 
 namespace OrganizerTask1.UI.ViewModels
 {
