@@ -1,4 +1,5 @@
 ﻿using System;
+using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTasks1.Model;
 
 namespace OrganizerTask1.UI.ViewModels

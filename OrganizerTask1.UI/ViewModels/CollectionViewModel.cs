@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using OrganizerTasks1;
+﻿using System.Collections.ObjectModel;
 using OrganizerTasks1.DAL;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public abstract class CollectionViewModel<T> : ViewModelBase where T: class
+    public abstract class CollectionViewModel<T, U> : ViewModelBase where T : class
     {
         protected readonly IDataProvider _dataProvider;
         protected ObservableCollection<T> _entities = new ObservableCollection<T>();
@@ -16,7 +14,15 @@ namespace OrganizerTask1.UI.ViewModels
             PopulateData();
         }
 
-        protected abstract void PopulateData();
+        protected virtual void PopulateData()
+        {
+            foreach (var modelEntity in _dataProvider.GetCollection<U>())
+            {
+                _entities.Add(CreateViewModelEntity(modelEntity));
+            }
+        }
+
+        protected abstract T CreateViewModelEntity(U data);
 
         public ObservableCollection<T> Entities
         {

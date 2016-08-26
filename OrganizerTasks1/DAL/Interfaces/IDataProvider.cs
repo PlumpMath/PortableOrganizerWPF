@@ -9,6 +9,8 @@ namespace OrganizerTasks1.DAL
         IList<Event> Events { get; set; }
         IList<Note> Notes { get; set; }
 
+        IList<T> GetCollection<T>();
+
         void Save();
     }
 }

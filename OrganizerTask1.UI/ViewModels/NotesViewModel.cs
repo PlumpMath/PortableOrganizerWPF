@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 using OrganizerTask1.UI.Misc;
 using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTasks1.DAL;
@@ -6,7 +7,7 @@ using OrganizerTasks1.Model;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    class NotesViewModel : CollectionViewModel<NoteViewModel>, INotesViewModel
+    class NotesViewModel : CollectionViewModel<NoteViewModel, Note>, INotesViewModel
     {
         public NotesViewModel(IDataProvider dataProvider) : base(dataProvider)
         {
@@ -14,12 +15,9 @@ namespace OrganizerTask1.UI.ViewModels
             DeleteCommand = new RelayCommand(Delete, CanDelete);
         }
 
-        protected override void PopulateData()
+        protected override NoteViewModel CreateViewModelEntity(Note data)
         {
-            foreach (var note in _dataProvider.Notes)
-            {
-                base.Entities.Add(new NoteViewModel(note));
-            }
+            return new NoteViewModel(data);
         }
 
         public ICommand NewCommand { get; set; }
@@ -30,6 +28,7 @@ namespace OrganizerTask1.UI.ViewModels
             var nNote = new Note() {Name = "New note", Description = "New note description"};
             _dataProvider.Notes.Add(nNote);
             Entities.Add(new NoteViewModel(nNote));
+            InAddMode = Visibility.Visible;
         }
 
         public void Delete(object args)
@@ -42,5 +41,20 @@ namespace OrganizerTask1.UI.ViewModels
         {
             return SelectedEntity != null;
         }
+
+        private Visibility _inAddMode = Visibility.Hidden;
+        public Visibility InAddMode 
+        {
+            get
+            {
+                return _inAddMode;
+            }
+            set
+            {
+                _inAddMode = value;
+                OnPropertyChanged("InAddMode");
+            }
+        }
+
     }
 }

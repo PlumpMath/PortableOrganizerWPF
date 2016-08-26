@@ -53,6 +53,7 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OrganizerTasks1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -91,6 +92,9 @@
     <Compile Include="ViewModels\TasksViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\AddNewControls\AddNewNote.xaml.cs">
+      <DependentUpon>AddNewNote.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EventsUserControl.xaml.cs">
       <DependentUpon>EventsUserControl.xaml</DependentUpon>
     </Compile>
@@ -100,6 +104,10 @@
     <Compile Include="Views\TasksUserControl.xaml.cs">
       <DependentUpon>TasksUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddNewControls\AddNewNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EventsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Styles\ButtonCollectionControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Styles\InputTextBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +192,9 @@
     <Resource Include="Images\TaskStatus\Closed.png" />
     <Resource Include="Images\TaskStatus\InProgress.png" />
     <Resource Include="Images\TaskStatus\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\RemoveControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

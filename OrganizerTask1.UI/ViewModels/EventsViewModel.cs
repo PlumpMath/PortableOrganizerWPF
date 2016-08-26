@@ -1,9 +1,10 @@
 ﻿using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTasks1.DAL;
+using OrganizerTasks1.Model;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public class EventsViewModel : CollectionViewModel<EventViewModel>, IEventsViewModel
+    public class EventsViewModel : CollectionViewModel<EventViewModel, Event>, IEventsViewModel
     {
         public EventsViewModel(IDataProvider dataProvider)
             : base(dataProvider)
@@ -11,12 +12,9 @@ namespace OrganizerTask1.UI.ViewModels
 
         }
 
-        protected override void PopulateData()
+        protected override EventViewModel CreateViewModelEntity(Event data)
         {
-            foreach (var eventData in _dataProvider.Events)
-            {
-                Entities.Add(new EventViewModel(eventData));
-            }
+            return new EventViewModel(data);
         }
     }
 }

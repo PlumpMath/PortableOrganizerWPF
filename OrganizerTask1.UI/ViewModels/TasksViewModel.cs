@@ -2,11 +2,12 @@
 using OrganizerTask1.UI.Misc;
 using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTasks1.DAL;
+using OrganizerTasks1.Model;
 using TaskStatus = OrganizerTasks1.Model.TaskStatus;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public class TasksViewModel : CollectionViewModel<TaskViewModel>, ITasksViewModel
+    public class TasksViewModel : CollectionViewModel<TaskViewModel, Task>, ITasksViewModel
     {
         public TasksViewModel(IDataProvider dataProvider)
             : base(dataProvider)
@@ -14,12 +15,9 @@ namespace OrganizerTask1.UI.ViewModels
             CloseTaskCommand = new RelayCommand(CloseTask, CanCloseTask);
         }
 
-        protected override void PopulateData()
+        protected override TaskViewModel CreateViewModelEntity(Task data)
         {
-            foreach (var task in _dataProvider.Tasks)
-            {
-                base.Entities.Add(new TaskViewModel(task));
-            }
+            return new TaskViewModel(data);
         }
 
         #region Commands
