@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Convertors\NotesVisibilityControl.cs" />
     <Compile Include="Misc\BootstrapperUnity.cs" />
     <Compile Include="Misc\Mapping.cs" />
     <Compile Include="Convertors\ImagePathConverter.cs" />

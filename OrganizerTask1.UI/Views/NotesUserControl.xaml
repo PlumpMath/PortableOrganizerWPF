@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:addNewControls="clr-namespace:OrganizerTask1.UI.Views.AddNewControls"
+             xmlns:viewModels="clr-namespace:OrganizerTask1.UI.ViewModels"
+             xmlns:conv="clr-namespace:OrganizerTask1.UI.Convertors"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <conv:NotesVisibilityControl x:Key="NotesVisibilityConverter"></conv:NotesVisibilityControl>
+    </UserControl.Resources>
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
@@ -30,16 +35,29 @@
                         HorizontalContentAlignment="Stretch"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         BorderBrush="Transparent"
+                        Visibility="{Binding Path=CurMode, Converter={StaticResource NotesVisibilityConverter}, ConverterParameter=Normal}"
                       />
         
-        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"
+                   Visibility="{Binding Path=CurMode, Converter={StaticResource NotesVisibilityConverter}, ConverterParameter=Normal}">
             <Button Style="{StaticResource CollectionControlButtonStyle}" Content="New" Command="{Binding Path=NewCommand}"/>
             <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Edit" />
             <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Delete" Command="{Binding Path=DeleteCommand}"/>
         </WrapPanel>
 
-        <addNewControls:AddNewNote Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" Visibility="{Binding Path=InAddMode}"/>
-        
+        <addNewControls:AddNewNote Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" Visibility="{Binding Path=CurMode, 
+                            Converter={StaticResource NotesVisibilityConverter}, ConverterParameter=Add}"
+                                   />
+        <!--<ContentControl Grid.Row="0" Grid.RowSpan="2" Content="{Binding SelectedEntity}"
+                        Visibility="{Binding Path=CurMode, Converter={StaticResource NotesVisibilityConverter}, ConverterParameter=Add}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
+                    <addNewControls:AddNewNote/>
+                </DataTemplate>
+            </ContentControl.Resources>
+
+        </ContentControl>-->
+
     </Grid>
 </UserControl>
 

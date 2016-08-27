@@ -28,7 +28,7 @@ namespace OrganizerTask1.UI.ViewModels
             var nNote = new Note() {Name = "New note", Description = "New note description"};
             _dataProvider.Notes.Add(nNote);
             Entities.Add(new NoteViewModel(nNote));
-            InAddMode = Visibility.Visible;
+            CurMode = CurrentMode.Add;
         }
 
         public void Delete(object args)
@@ -42,18 +42,22 @@ namespace OrganizerTask1.UI.ViewModels
             return SelectedEntity != null;
         }
 
-        private Visibility _inAddMode = Visibility.Hidden;
-        public Visibility InAddMode 
+        private CurrentMode _currentMode = CurrentMode.Normal;
+        public CurrentMode CurMode
         {
-            get
-            {
-                return _inAddMode;
-            }
+            get { return _currentMode; }
             set
             {
-                _inAddMode = value;
-                OnPropertyChanged("InAddMode");
+                _currentMode = value;
+                OnPropertyChanged("CurMode");
             }
+        }
+
+        public enum CurrentMode
+        {
+            Add,
+            Edit,
+            Normal
         }
 
     }
