@@ -79,6 +79,7 @@
     <Compile Include="Convertors\VisibilityControl.cs" />
     <Compile Include="ViewModels\CollectionViewModel.cs" />
     <Compile Include="ViewModels\DataViewModel.cs" />
+    <Compile Include="ViewModels\EditorViewModel.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IEventsViewModel.cs" />
@@ -92,11 +93,14 @@
     <Compile Include="ViewModels\TasksViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\AddNewControls\AddNewNote.xaml.cs">
-      <DependentUpon>AddNewNote.xaml</DependentUpon>
+    <Compile Include="Views\EditorUserControl.xaml.cs">
+      <DependentUpon>EditorUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EventsUserControl.xaml.cs">
       <DependentUpon>EventsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemEditors\NoteUserControl.xaml.cs">
+      <DependentUpon>NoteUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NotesUserControl.xaml.cs">
       <DependentUpon>NotesUserControl.xaml</DependentUpon>
@@ -104,11 +108,23 @@
     <Compile Include="Views\TasksUserControl.xaml.cs">
       <DependentUpon>TasksUserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\AddNewControls\AddNewNote.xaml">
+    <Page Include="Views\DataTemplates\EditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataTemplates\NoteEditDataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditorUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EventsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemEditors\NoteUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

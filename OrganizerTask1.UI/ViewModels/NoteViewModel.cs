@@ -11,6 +11,11 @@ namespace OrganizerTask1.UI.ViewModels
             _note = note;
         }
 
+        public Note NoteModel
+        {
+            get { return _note;}
+        }
+
         public string Name
         {
             get { return _note.Name; }

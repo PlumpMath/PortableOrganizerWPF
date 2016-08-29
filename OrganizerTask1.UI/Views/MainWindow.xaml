@@ -47,13 +47,13 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:NotesViewModel}">
                     <Views:NotesUserControl/>
-                </DataTemplate>                
+                </DataTemplate>
             </ContentControl.Resources>
             
         </ContentControl>
-
-        <!--<Border Grid.Row="1" Background="Gray" Opacity=".4" >
-                
+        <!--
+        <Border Grid.Row="0" Grid.RowSpan="2" Background="Gray" Opacity=".8"  Visibility="Hidden">
+            <Views:EditorUserControl />
                 
         </Border>
 

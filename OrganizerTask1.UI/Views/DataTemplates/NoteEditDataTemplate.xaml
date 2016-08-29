@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:OrganizerTask1.UI.ViewModels">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="..\..\Views\Styles\InputTextBoxStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
+        <Border BorderThickness="1" BorderBrush="#640000FF">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <Label Content="Name" Height="30"></Label>
+                    <TextBox Width="230" Height="30" Text="{Binding Name, Mode=TwoWay}"
+                         Style="{StaticResource InputTextBoxStyle}">
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <Label Content="Description"></Label>
+                    <TextBox Width="200" Text="{Binding Description, Mode=TwoWay}"
+                         Style="{StaticResource InputTextBoxStyle}" AcceptsReturn="True" TextWrapping="Wrap" >
+                    </TextBox>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

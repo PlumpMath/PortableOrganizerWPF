@@ -4,7 +4,7 @@
         <Style.Resources>
             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                 <VisualBrush.Visual>
-                    <Label Content="Enter name here..." Foreground="LightGray" />
+                    <Label Content="Enter data here..." Foreground="LightGray" />
                 </VisualBrush.Visual>
             </VisualBrush>
         </Style.Resources>

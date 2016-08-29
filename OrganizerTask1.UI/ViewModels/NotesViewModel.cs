@@ -22,13 +22,31 @@ namespace OrganizerTask1.UI.ViewModels
 
         public ICommand NewCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
+        public ICommand CloseAddViewCommand { get; set; }
 
         public void New(object args)
         {
-            var nNote = new Note() {Name = "New note", Description = "New note description"};
-            _dataProvider.Notes.Add(nNote);
-            Entities.Add(new NoteViewModel(nNote));
+            Editor = new EditorViewModel {EditingItem = new NoteViewModel(new Note())};
+            //var nNote = new Note();
+            ////_dataProvider.Notes.Add(nNote);
+            ////Entities.Add(new NoteViewModel(nNote));
+            //SelectedEntity = new NoteViewModel(nNote);
+            //CurMode = CurrentMode.Add;
+        }
+
+        public void Save(object args)
+        {
+            _dataProvider.Notes.Add(SelectedEntity.NoteModel);
+            Entities.Add(SelectedEntity);
+            SelectedEntity = null;
+
             CurMode = CurrentMode.Add;
+        }
+
+        public bool CanSave(object args)
+        {
+            return SelectedEntity != null && !string.IsNullOrEmpty(SelectedEntity.Name) && !string.IsNullOrEmpty(SelectedEntity.Description);
         }
 
         public void Delete(object args)
