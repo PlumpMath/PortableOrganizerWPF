@@ -7,52 +7,35 @@ namespace OrganizerTask1.UI.ViewModels
 {
     public class EditorViewModel : ViewModelBase
     {
-        public event EventHandler CloseRequested;
-        public event EventHandler<object> SaveRequested;
+        public ICommand CloseCommand { get { return _closeCommand; } }
+        public ICommand SaveCommand { get { return _saveCommand; } }
 
-        public EditorViewModel()
+        private readonly ICommand _closeCommand;
+        private readonly ICommand _saveCommand;
+        private readonly NotificationCenter notificationCenter;
+
+        public EditorViewModel(NotificationCenter _notificationCenter)
         {
             _closeCommand = new RelayCommand(Close);
             _saveCommand = new RelayCommand(Save);
+            notificationCenter = _notificationCenter;
         }
 
         private ViewModelBase _editingItem;
-        public ViewModelBase EditingItem 
+        public ViewModelBase EditingItem
         {
-            get { return _editingItem;}
+            get { return _editingItem; }
             set { _editingItem = value; }
-        }
-
-        public void SetEditData<TData>(TData inData) where TData : ViewModelBase
-        {
-            _editingItem = inData;
-        }
-
-        private readonly ICommand _closeCommand;
-        public ICommand CloseCommand
-        {
-            get { return _closeCommand; }
         }
 
         private void Close(object args)
         {
-            var handler = CloseRequested;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-
-        private readonly ICommand _saveCommand;
-        public ICommand SaveCommand
-        {
-            get { return _saveCommand; }
+            notificationCenter.PostNotification(NotificationName.CLOSE_ITEM_EDIT_MODAL);
         }
 
         private void Save(object args)
         {
-            var handler = SaveRequested;
-            if (handler != null)
-                handler(this, args);
+            notificationCenter.PostNotification(NotificationName.CLOSE_ITEM_EDIT_MODAL, new NotificationArgsItemEditModalClose(EditingItem));
         }
     }
-
 }

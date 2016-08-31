@@ -10,20 +10,22 @@
         <Border BorderThickness="1" BorderBrush="#640000FF">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-
-                <StackPanel Orientation="Horizontal" Grid.Row="0">
-                    <Label Content="Name" Height="30"></Label>
-                    <TextBox Width="230" Height="30" Text="{Binding Name, Mode=TwoWay}"
-                         Style="{StaticResource InputTextBoxStyle}">
+                
+                <Label Content="Note" Grid.Row="0" HorizontalAlignment="Center"></Label>
+                <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Stretch">
+                    <Label Content="Name"></Label>
+                    <TextBox Text="{Binding Name, Mode=TwoWay}" HorizontalAlignment="Stretch"
+                         Style="{StaticResource InputTextBoxStyle}" MaxLength="40">
                     </TextBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Stretch">
                     <Label Content="Description"></Label>
-                    <TextBox Width="200" Text="{Binding Description, Mode=TwoWay}"
+                    <TextBox Text="{Binding Description, Mode=TwoWay}" HorizontalAlignment="Stretch" MinHeight="100"
                          Style="{StaticResource InputTextBoxStyle}" AcceptsReturn="True" TextWrapping="Wrap" >
                     </TextBox>
                 </StackPanel>

@@ -11,21 +11,15 @@
         <Border BorderThickness="2" BorderBrush="#640000FF" Background="Beige">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition ></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 
-                <ContentControl Grid.Row="0" Content="{Binding EditingItem}">
-                    <!--<ContentControl.Resources>
-                        <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
-                            
-                        </DataTemplate>
-                    </ContentControl.Resources>-->
-                </ContentControl>
+                <ContentControl Grid.Row="0" Content="{Binding EditingItem}" />
 
-                <WrapPanel Orientation="Horizontal" Grid.Row="1" Height="Auto" HorizontalAlignment="Center" >
-                    <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Save" Command="{Binding Path=NewCommand}" />
-                    <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Close" />
+                <WrapPanel Orientation="Horizontal" Grid.Row="1" Height="Auto" HorizontalAlignment="Center" Margin="20" >
+                    <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Save" Command="{Binding Path=SaveCommand}" />
+                    <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Discard" Command="{Binding Path=CloseCommand}"/>
                 </WrapPanel>
             </Grid>
         </Border>

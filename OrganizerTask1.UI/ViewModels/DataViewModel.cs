@@ -1,12 +1,14 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using OrganizerTask1.UI.Misc;
 using OrganizerTask1.UI.ViewModels.Interfaces;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public class DataViewModel : ViewModelBase, IMainWindowVM
+    public class DataViewModel : ViewModelBase, IMainWindowVM, IDisposable
     {
         public ICommand SetControlVisibility { get; set; }
+        private NotificationCenter notificationCenter;
 
         public DataViewModel(ITasksViewModel tasksViewModel, INotesViewModel notesViewModel, IEventsViewModel eventsViewModel, NotificationCenter notificationCenter)
         {
@@ -16,6 +18,7 @@ namespace OrganizerTask1.UI.ViewModels
 
             SetControlVisibility = new RelayCommand(ControlVisibility);
 
+            this.notificationCenter = notificationCenter;
             notificationCenter.AddMessageHandler(ShowModal, NotificationName.SHOW_ITEM_EDIT_MODAL);
             notificationCenter.AddMessageHandler(CloseModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
         }
@@ -113,6 +116,14 @@ namespace OrganizerTask1.UI.ViewModels
 
         #endregion
 
+        public void Dispose()
+        {
+            if (notificationCenter != null)
+            {
+                notificationCenter.RemoveMessageHandler(ShowModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
+                notificationCenter.RemoveMessageHandler(CloseModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
+            }
+        }
     }
 
     public enum Categories

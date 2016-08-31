@@ -22,4 +22,14 @@ namespace OrganizerTask1.UI.Misc
             ModalViewModel = modalViewModel;
         }
     }
+
+    public class NotificationArgsItemEditModalClose : NotificationArgs
+    {
+        public ViewModelBase ResultEntity { get; private set; }
+
+        public NotificationArgsItemEditModalClose(ViewModelBase resultEntity)
+        {
+            ResultEntity = resultEntity;
+        }
+    }
 }
