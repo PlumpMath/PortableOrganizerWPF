@@ -10,6 +10,13 @@
     </Window.Resources>
     
     <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="..\Views\DataTemplates\EditorView.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="200*"></RowDefinition>
@@ -27,15 +34,6 @@
             </Button>            
         </WrapPanel>
 
-        <!--<StackPanel Grid.Row="1">
-            <Views:EventsUserControl Visibility="{Binding Path=VisibleControl, 
-                Converter={StaticResource VisibilityConverter}, ConverterParameter=Events}"/>
-            <Views:NotesUserControl Visibility="{Binding Path=VisibleControl, 
-                Converter={StaticResource VisibilityConverter}, ConverterParameter=Notes}"/>
-            <Views:TasksUserControl DataContext="{Binding TasksViewModel}"  Visibility="{Binding Path=VisibleControl, 
-                Converter={StaticResource VisibilityConverter}, ConverterParameter=Tasks}"/>
-        </StackPanel>-->
-
         <ContentControl Grid.Row="1" 
                         Content="{Binding CurrentVM}">
             <ContentControl.Resources>
@@ -49,19 +47,9 @@
                     <Views:NotesUserControl/>
                 </DataTemplate>
             </ContentControl.Resources>
-            
         </ContentControl>
-        <!--
-        <Border Grid.Row="0" Grid.RowSpan="2" Background="Gray" Opacity=".8"  Visibility="Hidden">
-            <Views:EditorUserControl />
-                
-        </Border>
 
-
-        <ContentControl  Grid.Row="1">
-            <Button Width="100" Height="100" >asd</Button>
-            
-        </ContentControl>-->
+        <ContentControl Grid.Row="0" Grid.RowSpan="2" Content="{Binding ModalWindow}"/>
 
     </Grid>
 </Window>

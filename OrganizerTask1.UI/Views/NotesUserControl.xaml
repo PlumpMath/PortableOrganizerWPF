@@ -35,21 +35,13 @@
                         HorizontalContentAlignment="Stretch"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         BorderBrush="Transparent"
-                        Visibility="{Binding Path=CurMode, Converter={StaticResource NotesVisibilityConverter}, ConverterParameter=Normal}"
                       />
         
-        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"
-                   Visibility="{Binding Path=CurMode, Converter={StaticResource NotesVisibilityConverter}, ConverterParameter=Normal}">
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Style="{StaticResource CollectionControlButtonStyle}" Content="New" Command="{Binding Path=NewCommand}"/>
-            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Edit" />
+            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Edit" Command="{Binding Path=EditCommand}" />
             <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Delete" Command="{Binding Path=DeleteCommand}"/>
         </WrapPanel>
-
-        <!--<addNewControls:AddNewNote Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" Visibility="{Binding Path=CurMode, 
-                            Converter={StaticResource NotesVisibilityConverter}, ConverterParameter=Add}"
-                                   />-->
-
-        <ContentControl Grid.Row="0" Grid.RowSpan="2" Content="{Binding Editor}"/>
 
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using OrganizerTask1.UI.ViewModels.Interfaces;
+﻿using OrganizerTask1.UI.Misc;
+using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTasks1.DAL;
 using OrganizerTasks1.Model;
 
@@ -6,8 +7,8 @@ namespace OrganizerTask1.UI.ViewModels
 {
     public class EventsViewModel : CollectionViewModel<EventViewModel, Event>, IEventsViewModel
     {
-        public EventsViewModel(IDataProvider dataProvider)
-            : base(dataProvider)
+        public EventsViewModel(IDataProvider dataProvider, NotificationCenter notificationCenter)
+            : base(dataProvider, notificationCenter)
         {
 
         }

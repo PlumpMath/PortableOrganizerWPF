@@ -5,36 +5,54 @@ using OrganizerTask1.UI.ViewModels.Interfaces;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public class EditorViewModel : ViewModelBase, IVewModel
+    public class EditorViewModel : ViewModelBase
     {
+        public event EventHandler CloseRequested;
+        public event EventHandler<object> SaveRequested;
+
         public EditorViewModel()
         {
-             _close = new RelayCommand((o) =>
-                {
-                    var handler = CloseRequested;
-                    if (handler != null)
-                        handler(this, EventArgs.Empty);
-                });
+            _closeCommand = new RelayCommand(Close);
+            _saveCommand = new RelayCommand(Save);
         }
 
         private ViewModelBase _editingItem;
-        public ViewModelBase EditingItem
+        public ViewModelBase EditingItem 
         {
-            get { return _editingItem; }
-            set
-            {
-                _editingItem = value;
-                OnPropertyChanged("EditingItem");
-            }
+            get { return _editingItem;}
+            set { _editingItem = value; }
         }
 
-        private readonly ICommand _close;
-        public ICommand Close
+        public void SetEditData<TData>(TData inData) where TData : ViewModelBase
         {
-            get { return _close; }
+            _editingItem = inData;
         }
 
-        public event EventHandler CloseRequested;
-        public event EventHandler SaveRequested;
+        private readonly ICommand _closeCommand;
+        public ICommand CloseCommand
+        {
+            get { return _closeCommand; }
+        }
+
+        private void Close(object args)
+        {
+            var handler = CloseRequested;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        private readonly ICommand _saveCommand;
+        public ICommand SaveCommand
+        {
+            get { return _saveCommand; }
+        }
+
+        private void Save(object args)
+        {
+            var handler = SaveRequested;
+            if (handler != null)
+                handler(this, args);
+        }
     }
+
 }

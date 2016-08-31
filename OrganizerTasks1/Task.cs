@@ -3,12 +3,9 @@
 namespace OrganizerTasks1.Model
 {
     [Serializable]
-    public class Task : IDataModelObject
+    public class Task : DataModelObject
     {
-        public string Name { get; set; }
-
         public string Description { get; set; }
-
         public TaskStatus Status { get; set; }
     }
 

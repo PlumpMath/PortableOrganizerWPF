@@ -9,8 +9,8 @@ namespace OrganizerTask1.UI.ViewModels
 {
     public class TasksViewModel : CollectionViewModel<TaskViewModel, Task>, ITasksViewModel
     {
-        public TasksViewModel(IDataProvider dataProvider)
-            : base(dataProvider)
+        public TasksViewModel(IDataProvider dataProvider, NotificationCenter notificationCenter)
+            : base(dataProvider, notificationCenter)
         {
             CloseTaskCommand = new RelayCommand(CloseTask, CanCloseTask);
         }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using OrganizerTask1.UI.ViewModels;
 using OrganizerTask1.UI.ViewModels.Interfaces;
-using OrganizerTasks1;
 using OrganizerTasks1.DAL;
 
 namespace OrganizerTask1.UI.Misc
@@ -29,6 +23,7 @@ namespace OrganizerTask1.UI.Misc
 
         private void Configure()
         {
+            _container.RegisterType<NotificationCenter, NotificationCenter>(new ContainerControlledLifetimeManager(), new InjectionFactory(x => new NotificationCenter()));
             _container.RegisterType<IMainWindowVM, DataViewModel>();
             _container.RegisterType<IDataProvider, DataProvider>(new ContainerControlledLifetimeManager(), new InjectionFactory(x => new DataProvider()));
             _container.RegisterType<ITasksViewModel, TasksViewModel>();

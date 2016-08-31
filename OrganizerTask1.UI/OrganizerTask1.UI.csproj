@@ -77,22 +77,25 @@
     <Compile Include="Misc\Mapping.cs" />
     <Compile Include="Convertors\ImagePathConverter.cs" />
     <Compile Include="Convertors\VisibilityControl.cs" />
-    <Compile Include="ViewModels\CollectionViewModel.cs" />
+    <Compile Include="Misc\Notification.cs" />
+    <Compile Include="Misc\NotificationArgs.cs" />
+    <Compile Include="Misc\NotificationCenter.cs" />
+    <Compile Include="ViewModels\Base\CollectionViewModel.cs" />
     <Compile Include="ViewModels\DataViewModel.cs" />
     <Compile Include="ViewModels\EditorViewModel.cs" />
-    <Compile Include="ViewModels\EventsViewModel.cs" />
-    <Compile Include="ViewModels\EventViewModel.cs" />
+    <Compile Include="ViewModels\Collections\EventsViewModel.cs" />
+    <Compile Include="ViewModels\SingleObject\EventViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IEventsViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IMainWindowVM.cs" />
     <Compile Include="ViewModels\Interfaces\INotesViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\ITasksViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IVewModel.cs" />
-    <Compile Include="ViewModels\NotesViewModel.cs" />
-    <Compile Include="ViewModels\NoteViewModel.cs" />
+    <Compile Include="ViewModels\Collections\NotesViewModel.cs" />
+    <Compile Include="ViewModels\SingleObject\NoteViewModel.cs" />
     <Compile Include="Misc\RelayCommand.cs" />
-    <Compile Include="ViewModels\TasksViewModel.cs" />
-    <Compile Include="ViewModels\TaskViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Collections\TasksViewModel.cs" />
+    <Compile Include="ViewModels\SingleObject\TaskViewModel.cs" />
+    <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="Views\EditorUserControl.xaml.cs">
       <DependentUpon>EditorUserControl.xaml</DependentUpon>
     </Compile>

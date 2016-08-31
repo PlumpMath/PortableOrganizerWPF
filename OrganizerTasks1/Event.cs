@@ -3,10 +3,8 @@
 namespace OrganizerTasks1.Model
 {
     [Serializable]
-    public class Event : IDataModelObject
+    public class Event : DataModelObject
     {
-        public string Name { get; set; }
-
         public DateTime Date { set; get; }
     }
 }

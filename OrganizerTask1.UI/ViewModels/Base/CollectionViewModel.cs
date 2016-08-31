@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using OrganizerTask1.UI.Misc;
+using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTasks1.DAL;
 
 namespace OrganizerTask1.UI.ViewModels
@@ -6,11 +8,13 @@ namespace OrganizerTask1.UI.ViewModels
     public abstract class CollectionViewModel<T, U> : ViewModelBase where T : class
     {
         protected readonly IDataProvider _dataProvider;
+        protected readonly NotificationCenter _notificationCenter;
         protected ObservableCollection<T> _entities = new ObservableCollection<T>();
 
-        public CollectionViewModel(IDataProvider dataProvider)
+        protected CollectionViewModel(IDataProvider dataProvider, NotificationCenter notificationCenter)
         {
             _dataProvider = dataProvider;
+            _notificationCenter = notificationCenter;
             PopulateData();
         }
 
@@ -29,17 +33,6 @@ namespace OrganizerTask1.UI.ViewModels
             get { return _entities; }
         }
 
-        private EditorViewModel _editor;
-        public EditorViewModel Editor
-        {
-            get { return _editor; }
-            set
-            {
-                _editor = value;
-                OnPropertyChanged("Editor");
-            }
-        }
-
         protected T _selectedEntity;
         public T SelectedEntity
         {
@@ -50,5 +43,7 @@ namespace OrganizerTask1.UI.ViewModels
                 OnPropertyChanged("SelectedEntity");
             }
         }
+
+        //protected abstract void RequestEditor<T>(T entityVM);
     }
 }

@@ -8,34 +8,18 @@ namespace OrganizerTask1.UI.ViewModels
     {
         public ICommand SetControlVisibility { get; set; }
 
-        public DataViewModel(ITasksViewModel tasksViewModel, INotesViewModel notesViewModel, IEventsViewModel eventsViewModel)
+        public DataViewModel(ITasksViewModel tasksViewModel, INotesViewModel notesViewModel, IEventsViewModel eventsViewModel, NotificationCenter notificationCenter)
         {
             TasksViewModel = tasksViewModel;
             NotesViewModel = notesViewModel;
             EventsViewModel = eventsViewModel;
 
             SetControlVisibility = new RelayCommand(ControlVisibility);
-        }
 
-        public void ControlVisibility(object args)
-        {
-            switch ((Categories)args)
-            {
-                case Categories.Tasks:
-                    CurrentVM = TasksViewModel;
-                    break;
-                case Categories.Events:
-                    CurrentVM = EventsViewModel;
-                    break;
-                case Categories.Notes:
-                    CurrentVM = NotesViewModel;
-                    break;
-                default:
-                    CurrentVM = null;
-                    break;
-            }
+            notificationCenter.AddMessageHandler(ShowModal, NotificationName.SHOW_ITEM_EDIT_MODAL);
+            notificationCenter.AddMessageHandler(CloseModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
         }
-
+        
         private IVewModel _currentVM;
         public IVewModel CurrentVM
         {
@@ -43,16 +27,18 @@ namespace OrganizerTask1.UI.ViewModels
             set { _currentVM = value; OnPropertyChanged("CurrentVM"); }
         }
 
-        private string _visibleControl = "Tasks";
-        public string VisibleControl
+        private ViewModelBase _modalWindow;
+        public ViewModelBase ModalWindow
         {
-            get { return _visibleControl; }
-            set 
+            get { return _modalWindow; }
+            set
             {
-                _visibleControl = value;
-                OnPropertyChanged("VisibleControl");
+                _modalWindow = value;
+                OnPropertyChanged("ModalWindow");
             }
         }
+
+        #region CollectionVMs for Buttons
 
         private ITasksViewModel _tasksViewModel;
         public ITasksViewModel TasksViewModel
@@ -86,6 +72,47 @@ namespace OrganizerTask1.UI.ViewModels
                 OnPropertyChanged("NotesViewModel");
             }
         }
+
+        #endregion
+
+        #region MessageHandlers
+
+        private void ShowModal(Notification n)
+        {
+            var args = n.GetArgs<NotificationArgsItemEditModalShow>();
+            ModalWindow = args.ModalViewModel;
+        }
+
+        private void CloseModal(Notification n)
+        {
+            ModalWindow = null;
+        }
+
+        #endregion
+
+        #region Commands
+
+        public void ControlVisibility(object args)
+        {
+            switch ((Categories)args)
+            {
+                case Categories.Tasks:
+                    CurrentVM = TasksViewModel;
+                    break;
+                case Categories.Events:
+                    CurrentVM = EventsViewModel;
+                    break;
+                case Categories.Notes:
+                    CurrentVM = NotesViewModel;
+                    break;
+                default:
+                    CurrentVM = null;
+                    break;
+            }
+        }
+
+        #endregion
+
     }
 
     public enum Categories

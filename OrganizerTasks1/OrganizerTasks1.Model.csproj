@@ -54,8 +54,8 @@
   <ItemGroup>
     <Compile Include="DataModel.cs" />
     <Compile Include="DAL\DataProvider.cs" />
+    <Compile Include="DataModelObject.cs" />
     <Compile Include="Event.cs" />
-    <Compile Include="Interfaces\IDataModelObject.cs" />
     <Compile Include="DAL\Interfaces\IDataProvider.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="DAL\DataSerializer.cs" />
@@ -82,6 +82,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

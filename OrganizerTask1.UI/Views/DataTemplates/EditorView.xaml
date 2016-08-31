@@ -6,21 +6,21 @@
         <ResourceDictionary Source="..\..\Views\Styles\ButtonCollectionControlStyle.xaml" />
         <ResourceDictionary Source="..\..\Views\DataTemplates\NoteEditDataTemplate.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
-    
+
     <DataTemplate DataType="{x:Type viewModels:EditorViewModel}">
         <Border BorderThickness="2" BorderBrush="#640000FF" Background="Beige">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 
                 <ContentControl Grid.Row="0" Content="{Binding EditingItem}">
-                    <ContentControl.Resources>
+                    <!--<ContentControl.Resources>
                         <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
                             
                         </DataTemplate>
-                    </ContentControl.Resources>
+                    </ContentControl.Resources>-->
                 </ContentControl>
 
                 <WrapPanel Orientation="Horizontal" Grid.Row="1" Height="Auto" HorizontalAlignment="Center" >
