@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Linq;
+using System.Windows.Input;
 using OrganizerTask1.UI.Misc;
 using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTasks1.DAL;
@@ -32,7 +34,15 @@ namespace OrganizerTask1.UI.ViewModels
             if (editedItem == null)
                 return;
 
-            Entities.Add(editedItem);
+            NoteViewModel editedVM = Entities.ToList().Find((en) => en.NoteModel.Id == editedItem.NoteModel.Id);
+            if (editedVM == null)
+            {
+                Entities.Add(editedItem);
+                _dataProvider.Notes.Add(editedItem.NoteModel);
+                return;
+            }
+
+            editedVM.Update(editedItem);
         }
 
         public ICommand NewCommand { get; set; }
@@ -41,13 +51,15 @@ namespace OrganizerTask1.UI.ViewModels
 
         public void New(object args)
         {
-            ViewModelBase editor = new EditorViewModel(_notificationCenter) { EditingItem = new NoteViewModel(new Note()) };
+            ViewModelBase editor = new EditorViewModel(_notificationCenter) { EditingItem = new NoteViewModel(new Note() {Id = Guid.NewGuid()}) };
             _notificationCenter.PostNotification(NotificationName.SHOW_ITEM_EDIT_MODAL, new NotificationArgsItemEditModalShow(editor));
         }
 
         public void Edit(object args)
         {
-            ViewModelBase editor = new EditorViewModel(_notificationCenter) { EditingItem = SelectedEntity };
+            var noteSource = SelectedEntity.NoteModel;
+            var noteCopy = new Note() {Name = noteSource.Name, Description = noteSource.Description, Id = noteSource.Id};
+            ViewModelBase editor = new EditorViewModel(_notificationCenter) { EditingItem = new NoteViewModel(noteCopy) };
             _notificationCenter.PostNotification(NotificationName.SHOW_ITEM_EDIT_MODAL, new NotificationArgsItemEditModalShow(editor));
         }
 

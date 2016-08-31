@@ -35,5 +35,11 @@ namespace OrganizerTask1.UI.ViewModels
                 OnPropertyChanged("Description");
             }
         }
+
+        public void Update(NoteViewModel editedNote)
+        {
+            Name = editedNote.Name;
+            Description = editedNote.Description;
+        }
     }
 }
