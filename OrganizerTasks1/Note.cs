@@ -6,5 +6,13 @@ namespace OrganizerTasks1.Model
     public class Note : DataModelObject
     {
         public string Description { get; set; }
+
+        protected override void HandleCloned(DataModelObject clone)
+        {
+            base.HandleCloned(clone);
+
+            Note obj = (Note)clone;
+            obj.Description = string.Copy(this.Description);
+        }
     }
 }

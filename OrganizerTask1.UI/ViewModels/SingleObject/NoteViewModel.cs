@@ -1,14 +1,19 @@
-﻿using OrganizerTasks1.Model;
+﻿using System;
+using OrganizerTask1.UI.ViewModels.Interfaces;
+using OrganizerTasks1.Model;
+using OrganizerTasks1.Model.Interfaces;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public class NoteViewModel : ViewModelBase
+    public class NoteViewModel : ViewModelBase, IViewModelObject
     {
-        public readonly Note _note;
+        private readonly Note _note;
+        public IDataModelObject Model { get; private set; }
 
         public NoteViewModel(Note note)
         {
             _note = note;
+            Model = note;
         }
 
         public Note NoteModel
@@ -36,10 +41,13 @@ namespace OrganizerTask1.UI.ViewModels
             }
         }
 
-        public void Update(NoteViewModel editedNote)
+        public void Update(IViewModelObject sourceInstance)
         {
-            Name = editedNote.Name;
-            Description = editedNote.Description;
+            NoteViewModel source = sourceInstance as NoteViewModel;
+            if (source == null)
+                throw new ArgumentNullException("sourceInstance");
+            Name = source.Name;
+            Description = source.Description;
         }
     }
 }

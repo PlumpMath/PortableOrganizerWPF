@@ -10,6 +10,14 @@
         <Converter:ImagePathConverter x:Key="my:ImagePathConverter" />
     </UserControl.Resources>
     <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="DataTemplates\CollectionViewButtonsPanel.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>        
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto"/>
@@ -17,7 +25,9 @@
 
         <DataGrid Grid.Row="0"  Name="dataGridTasks"  AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Top" Height="Auto" Width="Auto"
                   ItemsSource="{Binding Entities}" Margin="0, 10" 
-                  SelectedItem="{Binding Path=SelectedEntity, Mode=TwoWay}">
+                  SelectedItem="{Binding Path=SelectedEntity, Mode=TwoWay}"
+                  IsReadOnly="True"
+                  >
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Status">
                     <DataGridTemplateColumn.CellTemplate>
@@ -35,7 +45,7 @@
                 <DataGridTextColumn Header="Description" Binding="{Binding Description, Mode=TwoWay}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="1" Content="Close" Command="{Binding Path=CloseTaskCommand}" Width="200" Margin="10" />
+        <ContentControl Grid.Row="1" Template="{ StaticResource buttonsCollectionPannel}" HorizontalAlignment="Center"></ContentControl>
         
     </Grid>
 </UserControl>

@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:OrganizerTask1.UI.ViewModels"
+                    xmlns:models="clr-namespace:OrganizerTasks1.Model;assembly=OrganizerTasks1"
+                    >
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="..\..\Views\Styles\InputTextBoxStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:TaskViewModel}">
+        <Border BorderThickness="1" BorderBrush="#640000FF">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Content="Task" Grid.Row="0" HorizontalAlignment="Center"></Label>
+                
+                <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Stretch">
+                    <Label Content="Name"></Label>
+                    <TextBox Text="{Binding Name, Mode=TwoWay}" HorizontalAlignment="Stretch"
+                         Style="{StaticResource InputTextBoxStyle}" MaxLength="40">
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Stretch">
+                    <Label Content="Description"></Label>
+                    <TextBox Text="{Binding Description, Mode=TwoWay}" HorizontalAlignment="Stretch" MinHeight="100"
+                         Style="{StaticResource InputTextBoxStyle}" AcceptsReturn="True" TextWrapping="Wrap" >
+                    </TextBox>
+                </StackPanel>
+
+                <ComboBox Grid.Row="3" ItemsSource="{Binding TaskStatusesList}" 
+                          DisplayMemberPath="StatusStringValue" 
+                          SelectedValuePath="EnumStatusValue"
+                          SelectedValue="{Binding Path=Status}" 
+                          HorizontalAlignment="Center"
+                          >
+                </ComboBox>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

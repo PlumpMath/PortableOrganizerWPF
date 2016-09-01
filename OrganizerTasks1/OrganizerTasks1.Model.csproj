@@ -57,6 +57,7 @@
     <Compile Include="DataModelObject.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="DAL\Interfaces\IDataProvider.cs" />
+    <Compile Include="Interfaces\IDataModelObject.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="DAL\DataSerializer.cs" />
     <Compile Include="Task.cs" />
@@ -83,9 +84,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

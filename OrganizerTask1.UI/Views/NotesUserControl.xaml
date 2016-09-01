@@ -3,20 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:viewModels="clr-namespace:OrganizerTask1.UI.ViewModels"
              xmlns:conv="clr-namespace:OrganizerTask1.UI.Convertors"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <conv:NotesVisibilityControl x:Key="NotesVisibilityConverter"></conv:NotesVisibilityControl>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="..\Views\DataTemplates\EditorView.xaml"/>
-                    <ResourceDictionary Source="..\Views\DataTemplates\NoteDataTemplate.xaml"/>                    
-                    <ResourceDictionary Source="..\Views\Styles\ButtonCollectionControlStyle.xaml" />
+                    <ResourceDictionary Source="DataTemplates\NoteDataTemplate.xaml"/>
+                    <ResourceDictionary Source="DataTemplates\CollectionViewButtonsPanel.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
@@ -37,12 +35,7 @@
                         BorderBrush="Transparent"
                       />
         
-        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="New" Command="{Binding Path=NewCommand}"/>
-            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Edit" Command="{Binding Path=EditCommand}" />
-            <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Delete" Command="{Binding Path=DeleteCommand}"/>
-        </WrapPanel>
-
+        <ContentControl Grid.Row="1" Template="{ StaticResource buttonsCollectionPannel}" HorizontalAlignment="Center"></ContentControl>
     </Grid>
 </UserControl>
 

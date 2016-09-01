@@ -7,6 +7,14 @@ namespace OrganizerTasks1.Model
     {
         public string Description { get; set; }
         public TaskStatus Status { get; set; }
+
+        protected override void HandleCloned(DataModelObject clone)
+        {
+            base.HandleCloned(clone);
+
+            Task obj = (Task)clone;
+            obj.Description = string.Copy(this.Description);
+        }
     }
 
     [Serializable]

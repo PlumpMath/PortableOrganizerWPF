@@ -3,8 +3,9 @@
                     xmlns:viewModels="clr-namespace:OrganizerTask1.UI.ViewModels">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="..\..\Views\Styles\ButtonCollectionControlStyle.xaml" />
-        <ResourceDictionary Source="..\..\Views\DataTemplates\NoteEditDataTemplate.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="..\Styles\ButtonCollectionControlStyle.xaml" />
+        <ResourceDictionary Source="..\ItemEditors\NoteEditDataTemplate.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="..\ItemEditors\TaskEditDataTemplate.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type viewModels:EditorViewModel}">

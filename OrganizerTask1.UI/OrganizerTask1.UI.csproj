@@ -84,6 +84,7 @@
     <Compile Include="ViewModels\DataViewModel.cs" />
     <Compile Include="ViewModels\EditorViewModel.cs" />
     <Compile Include="ViewModels\Collections\EventsViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IViewModelObject.cs" />
     <Compile Include="ViewModels\SingleObject\EventViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IEventsViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IMainWindowVM.cs" />
@@ -102,20 +103,21 @@
     <Compile Include="Views\EventsUserControl.xaml.cs">
       <DependentUpon>EventsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemEditors\NoteUserControl.xaml.cs">
-      <DependentUpon>NoteUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\NotesUserControl.xaml.cs">
       <DependentUpon>NotesUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TasksUserControl.xaml.cs">
       <DependentUpon>TasksUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\DataTemplates\CollectionViewButtonsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DataTemplates\EditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DataTemplates\NoteEditDataTemplate.xaml">
+    <Page Include="Views\ItemEditors\NoteEditDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,7 +129,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemEditors\NoteUserControl.xaml">
+    <Page Include="Views\ItemEditors\TaskEditDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
