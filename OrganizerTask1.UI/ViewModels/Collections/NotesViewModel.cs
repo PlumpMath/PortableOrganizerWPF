@@ -5,7 +5,7 @@ using OrganizerTasks1.Model;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    class NotesViewModel : CollectionViewModel<NoteViewModel, Note>, INotesViewModel
+    public class NotesViewModel : CollectionViewModel<NoteViewModel, Note>, INotesViewModel
     {
         public NotesViewModel(IDataProvider dataProvider, NotificationCenter notificationCenter)
             : base(dataProvider, notificationCenter)
