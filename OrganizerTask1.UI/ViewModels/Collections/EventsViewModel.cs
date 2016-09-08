@@ -7,7 +7,7 @@ namespace OrganizerTask1.UI.ViewModels
 {
     public class EventsViewModel : CollectionViewModel<EventViewModel, Event>, IEventsViewModel
     {
-        public EventsViewModel(IDataProvider dataProvider, NotificationCenter notificationCenter)
+        public EventsViewModel(IDataProvider dataProvider, INotificationCenter notificationCenter)
             : base(dataProvider, notificationCenter)
         {
 

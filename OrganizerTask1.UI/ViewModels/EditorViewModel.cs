@@ -5,16 +5,16 @@ using OrganizerTask1.UI.ViewModels.Interfaces;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public class EditorViewModel : ViewModelBase
+    public class EditorViewModel : ViewModelBase, IItemEditorVM
     {
         public ICommand CloseCommand { get { return _closeCommand; } }
         public ICommand SaveCommand { get { return _saveCommand; } }
 
         private readonly ICommand _closeCommand;
         private readonly ICommand _saveCommand;
-        private readonly NotificationCenter notificationCenter;
+        private readonly INotificationCenter notificationCenter;
 
-        public EditorViewModel(NotificationCenter _notificationCenter)
+        public EditorViewModel(INotificationCenter _notificationCenter)
         {
             _closeCommand = new RelayCommand(Close);
             _saveCommand = new RelayCommand(Save);

@@ -19,7 +19,7 @@ namespace OrganizerTask1.UI.Misc
         {
         }
 
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object parameter = null)
         {
             if (this._canExecuteEvaluator == null)
             {
@@ -31,7 +31,7 @@ namespace OrganizerTask1.UI.Misc
                 return result;
             }
         }
-        public void Execute(object parameter)
+        public void Execute(object parameter = null)
         {
             this._methodToExecute.Invoke(parameter);
         }

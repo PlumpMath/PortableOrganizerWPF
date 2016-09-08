@@ -8,9 +8,9 @@ namespace OrganizerTask1.UI.ViewModels
     public class DataViewModel : ViewModelBase, IMainWindowVM, IDisposable
     {
         public ICommand SetControlVisibility { get; set; }
-        private NotificationCenter notificationCenter;
+        private INotificationCenter notificationCenter;
 
-        public DataViewModel(ITasksViewModel tasksViewModel, INotesViewModel notesViewModel, IEventsViewModel eventsViewModel, NotificationCenter notificationCenter)
+        public DataViewModel(ITasksViewModel tasksViewModel, INotesViewModel notesViewModel, IEventsViewModel eventsViewModel, INotificationCenter notificationCenter)
         {
             TasksViewModel = tasksViewModel;
             NotesViewModel = notesViewModel;

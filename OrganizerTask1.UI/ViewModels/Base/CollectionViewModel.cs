@@ -15,10 +15,10 @@ namespace OrganizerTask1.UI.ViewModels
         where U : class, IDataModelObject, new()
     {
         protected readonly IDataProvider _dataProvider;
-        protected readonly NotificationCenter _notificationCenter;
-        
+        protected readonly INotificationCenter _notificationCenter;
 
-        protected CollectionViewModel(IDataProvider dataProvider, NotificationCenter notificationCenter)
+
+        protected CollectionViewModel(IDataProvider dataProvider, INotificationCenter notificationCenter)
         {
             _dataProvider = dataProvider;
             _notificationCenter = notificationCenter;

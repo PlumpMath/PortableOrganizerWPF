@@ -23,7 +23,7 @@ namespace OrganizerTask1.UI.Misc
 
         private void Configure()
         {
-            _container.RegisterType<NotificationCenter, NotificationCenter>(new ContainerControlledLifetimeManager(), new InjectionFactory(x => new NotificationCenter()));
+            _container.RegisterType<INotificationCenter, NotificationCenter>(new ContainerControlledLifetimeManager(), new InjectionFactory(x => new NotificationCenter()));
             _container.RegisterType<IMainWindowVM, DataViewModel>();
             _container.RegisterType<IDataProvider, DataProvider>(new ContainerControlledLifetimeManager(), new InjectionFactory(x => new DataProvider()));
             _container.RegisterType<ITasksViewModel, TasksViewModel>();

@@ -18,14 +18,14 @@
                 <Label Content="Note" Grid.Row="0" HorizontalAlignment="Center"></Label>
                 <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Stretch">
                     <Label Content="Name"></Label>
-                    <TextBox Text="{Binding Name, Mode=TwoWay}" HorizontalAlignment="Stretch"
+                    <TextBox Name="NameInput"  Text="{Binding Name, Mode=TwoWay}" HorizontalAlignment="Stretch"
                          Style="{StaticResource InputTextBoxStyle}" MaxLength="40">
                     </TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Stretch">
                     <Label Content="Description"></Label>
-                    <TextBox Text="{Binding Description, Mode=TwoWay}" HorizontalAlignment="Stretch" MinHeight="100"
+                    <TextBox Name="DescriptionInput" Text="{Binding Description, Mode=TwoWay}" HorizontalAlignment="Stretch" MinHeight="100"
                          Style="{StaticResource InputTextBoxStyle}" AcceptsReturn="True" TextWrapping="Wrap" >
                     </TextBox>
                 </StackPanel>

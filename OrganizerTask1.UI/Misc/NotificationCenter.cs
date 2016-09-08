@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace OrganizerTask1.UI.Misc
 {
-    public class NotificationCenter
+    public class NotificationCenter : INotificationCenter
     {
         private readonly Dictionary<NotificationName, List<NotificationHandler>> notifications =
             new Dictionary<NotificationName, List<NotificationHandler>>();
