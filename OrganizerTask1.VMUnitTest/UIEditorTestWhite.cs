@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using OrganizerTask1.VMUnitTest.Base;
 using TestStack.White;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
@@ -14,6 +15,8 @@ namespace OrganizerTask1.VMUnitTest
     [TestFixture]
     public class UIEditorTestWhite
     {
+        private Windows windows = new Windows();
+
         private Application app;
         private Window mainWindow;
 
@@ -23,78 +26,41 @@ namespace OrganizerTask1.VMUnitTest
             var path = @"C:\Users\VSoldatenko\MyApps\OrganizerTasks1\OrganizerTask1.UI\bin\Debug\OrganizerTask1.UI.exe";
             app = Application.Launch(path);
 
-            mainWindow = app.GetWindow("Oraganizer Task");
-
-            var notesButton = mainWindow.Get<Button>("Notes");
-            notesButton.Click();
+            windows.Init(app);
+            windows.MainWindow.OpenNotes();
         }
 
         [Test]
         public void AddNewItemTest()
         {
-            string newNoteName = "Test White added Note";
-            var addButton = mainWindow.Get<Button>(SearchCriteria.ByText("New"));
-            addButton.Click();
+            windows.MainWindow.AddNote("Test White added Note", "Test generated description");
+            bool isNoteAdded = windows.MainWindow.HasNote("Test White added Note");
 
-            mainWindow.Get<TextBox>("NameInput").Text = newNoteName;
-            mainWindow.Get<TextBox>("DescriptionInput").Text = "Test generated description";
-
-            var saveButton = mainWindow.Get<Button>(SearchCriteria.ByText("Save"));
-            saveButton.Click();
-
-            var notesList = mainWindow.Get<ListBox>("notesControl");
-            var item = notesList.Item(newNoteName);
-
-            Assert.IsNotNull(item);
-        }
-
-        private void EditItemNameChange(string editedNoteName)
-        {
-            var editButton = mainWindow.Get<Button>(SearchCriteria.ByText("Edit"));
-            editButton.Click();
-            mainWindow.Get<TextBox>("NameInput").Text = editedNoteName;
+            Assert.IsTrue(isNoteAdded);
         }
 
         [Test] 
         public void EditItemTest()
         {
-            string editedNoteName = Guid.NewGuid().ToString();
-            var notesList = mainWindow.Get<ListBox>("notesControl");
-            int count = notesList.Items.ToList().Count;
-            Assert.GreaterOrEqual(count, 1);
-            notesList.Select(0);
+            string newName = Guid.NewGuid().ToString();
 
-            EditItemNameChange(editedNoteName);
+            Assert.IsFalse(windows.MainWindow.IsNotesListEmpty(), "Notes list is empty");
+            windows.MainWindow.EditNote(0, newName, false);
 
-            var discardButton = mainWindow.Get<Button>(SearchCriteria.ByText("Discard"));
-            discardButton.Click();
+            Assert.IsFalse(windows.MainWindow.HasNote(newName));
 
-            Assert.IsFalse(notesList.SelectedItemText == editedNoteName);
+            windows.MainWindow.EditNote(0, newName, true);
 
-            EditItemNameChange(editedNoteName);
-
-            var saveButton = mainWindow.Get<Button>(SearchCriteria.ByText("Save"));
-            saveButton.Click();
-
-            var item = notesList.Item(editedNoteName);
-            Assert.IsNotNull(item);
-            Assert.IsTrue(notesList.SelectedItemText == editedNoteName);
+            Assert.IsTrue(windows.MainWindow.HasNote(newName));
         }
 
         [Test]
         public void RemoveItemTest()
         {
-            var notesList = mainWindow.Get<ListBox>("notesControl");
-            int count = notesList.Items.ToList().Count;
-            Assert.GreaterOrEqual(count, 1);
-            notesList.Select(count-1);
+            Assert.IsFalse(windows.MainWindow.IsNotesListEmpty(), "Notes list is empty");
 
-            var item = notesList.SelectedItem;
-
-            var deleteButton = mainWindow.Get<Button>(SearchCriteria.ByText("Delete"));
-            deleteButton.Click();
-
-            Assert.IsFalse(notesList.Items.Contains(item));
+            bool deletionResult = windows.MainWindow.RemoveLastNote();
+            Assert.IsTrue(deletionResult, "Not hasn't been deleted");
         }
 
         [OneTimeTearDown]

@@ -66,6 +66,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Base\MainWindow.cs" />
+    <Compile Include="Base\WindowObject.cs" />
+    <Compile Include="Base\Windows.cs" />
     <Compile Include="NotesVMTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIEditorTestWhite.cs" />
