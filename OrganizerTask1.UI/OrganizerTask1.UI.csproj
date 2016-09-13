@@ -99,6 +99,8 @@
     <Compile Include="ViewModels\Collections\TasksViewModel.cs" />
     <Compile Include="ViewModels\SingleObject\TaskViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Validation\ValidationError.cs" />
+    <Compile Include="ViewModels\Validation\ValidationErrorContainer.cs" />
     <Compile Include="Views\EditorUserControl.xaml.cs">
       <DependentUpon>EditorUserControl.xaml</DependentUpon>
     </Compile>
@@ -116,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DataTemplates\EditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataTemplates\ValidatedTextBoxTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,9 +222,7 @@
     <Resource Include="Images\TaskStatus\InProgress.png" />
     <Resource Include="Images\TaskStatus\New.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\RemoveControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

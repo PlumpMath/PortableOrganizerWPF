@@ -3,23 +3,27 @@
                     xmlns:viewModels="clr-namespace:OrganizerTask1.UI.ViewModels">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="..\..\Views\Styles\InputTextBoxStyle.xaml" />
+        <ResourceDictionary Source="..\Styles\InputTextBoxStyle.xaml" />
+        <ResourceDictionary Source="..\DataTemplates\ValidatedTextBoxTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
+        
         <Border BorderThickness="1" BorderBrush="#640000FF">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 
                 <Label Content="Note" Grid.Row="0" HorizontalAlignment="Center"></Label>
-                <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Stretch">
+                
+                <StackPanel Orientation="Vertical" Grid.Row="1" Height="80"  HorizontalAlignment="Stretch">
                     <Label Content="Name"></Label>
-                    <TextBox Name="NameInput"  Text="{Binding Name, Mode=TwoWay}" HorizontalAlignment="Stretch"
-                         Style="{StaticResource InputTextBoxStyle}" MaxLength="40">
+                    <TextBox Name="NameInput" HorizontalAlignment="Stretch" Style="{StaticResource InputTextBoxStyle}" MaxLength="40" Validation.ErrorTemplate="{StaticResource ValidatedTextBoxTemplate}" >
+                        <Binding Path="Name" Mode="TwoWay" TargetNullValue="" NotifyOnValidationError="True" ValidatesOnDataErrors="True" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged"/>
                     </TextBox>
                 </StackPanel>
 

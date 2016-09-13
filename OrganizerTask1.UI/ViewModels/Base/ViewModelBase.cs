@@ -4,10 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OrganizerTask1.UI.ViewModels.Validation;
 
 namespace OrganizerTask1.UI.ViewModels
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : ValidationErrorContainer, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

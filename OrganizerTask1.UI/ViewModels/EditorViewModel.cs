@@ -17,7 +17,7 @@ namespace OrganizerTask1.UI.ViewModels
         public EditorViewModel(INotificationCenter _notificationCenter)
         {
             _closeCommand = new RelayCommand(Close);
-            _saveCommand = new RelayCommand(Save);
+            _saveCommand = new RelayCommand(Save, CanSave);
             notificationCenter = _notificationCenter;
         }
 
@@ -36,6 +36,11 @@ namespace OrganizerTask1.UI.ViewModels
         private void Save(object args)
         {
             notificationCenter.PostNotification(NotificationName.CLOSE_ITEM_EDIT_MODAL, new NotificationArgsItemEditModalClose(EditingItem));
+        }
+
+        private bool CanSave(object obj)
+        {
+            return !EditingItem.HasErrors;
         }
     }
 }
