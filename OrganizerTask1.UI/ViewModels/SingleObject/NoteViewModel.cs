@@ -63,7 +63,7 @@ namespace OrganizerTask1.UI.ViewModels
         void ValidateMandatory(string value, string fieldName)
         {
             if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
-                AddError(new ValidationError(fieldName, "IsMandatory", "*" + fieldName + ": is mandatory"));
+                AddError(new ValidationError(fieldName, "IsMandatory", "*" + fieldName + ": can not be blank"));
             else
                 RemoveError(fieldName, "IsMandatory");
         }
