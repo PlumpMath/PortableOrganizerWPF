@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using OrganizerTask1.UI.ViewModels.Validation;
 
 namespace OrganizerTask1.UI.ViewModels

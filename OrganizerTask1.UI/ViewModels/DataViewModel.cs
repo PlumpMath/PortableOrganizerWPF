@@ -116,13 +116,29 @@ namespace OrganizerTask1.UI.ViewModels
 
         #endregion
 
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (notificationCenter != null)
+                {
+                    notificationCenter.RemoveMessageHandler(ShowModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
+                    notificationCenter.RemoveMessageHandler(CloseModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
+                }
+                disposed = true;
+            }
+        }
+
         public void Dispose()
         {
-            if (notificationCenter != null)
-            {
-                notificationCenter.RemoveMessageHandler(ShowModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
-                notificationCenter.RemoveMessageHandler(CloseModal, NotificationName.CLOSE_ITEM_EDIT_MODAL);
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~DataViewModel()
+        {
+            Dispose(false);
         }
     }
 

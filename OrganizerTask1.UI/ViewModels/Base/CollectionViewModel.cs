@@ -24,7 +24,6 @@ namespace OrganizerTask1.UI.ViewModels
             _notificationCenter = notificationCenter;
             PopulateData();
             InitCommands();
-            AddMessageHandlers();
         }
 
         private void InitCommands()
@@ -37,6 +36,13 @@ namespace OrganizerTask1.UI.ViewModels
         private void AddMessageHandlers()
         {
             _notificationCenter.AddMessageHandler(OnItemEdited, NotificationName.CLOSE_ITEM_EDIT_MODAL);
+            _notificationCenter.AddMessageHandler(OnItemValidateRequest, NotificationName.SAVE_ITEM_VALIDATE_REQUEST);
+        }
+
+        private void RemoveMessageHandlers()
+        {
+            _notificationCenter.RemoveMessageHandler(OnItemEdited, NotificationName.CLOSE_ITEM_EDIT_MODAL);
+            _notificationCenter.RemoveMessageHandler(OnItemValidateRequest, NotificationName.SAVE_ITEM_VALIDATE_REQUEST);
         }
 
         #region Properties
@@ -74,6 +80,8 @@ namespace OrganizerTask1.UI.ViewModels
         {
             ViewModelBase editor = new EditorViewModel(_notificationCenter) { EditingItem = itemVM };
             _notificationCenter.PostNotification(NotificationName.SHOW_ITEM_EDIT_MODAL, new NotificationArgsItemEditModalShow(editor));
+
+            AddMessageHandlers();
         }
 
         #region Commands
@@ -115,6 +123,16 @@ namespace OrganizerTask1.UI.ViewModels
 
         #region Message handlers
 
+        protected T FindEntity(Guid id)
+        {
+            return Entities.ToList().Find((en) => en.Model.Id == id);
+        }
+
+        protected T FindEntity(string name)
+        {
+            return Entities.ToList().Find((en) => en.Model.Name == name);
+        }
+
         private void OnItemEdited(Notification n)
         {
             var args = n.GetArgs<NotificationArgsItemEditModalClose>();
@@ -125,7 +143,7 @@ namespace OrganizerTask1.UI.ViewModels
             if (editedItem == null)
                 return;
 
-            T editedVM = Entities.ToList().Find((en) => en.Model.Id == editedItem.Model.Id);
+            T editedVM = FindEntity(editedItem.Model.Id);
             if (editedVM == null)
             {
                 Entities.Add(editedItem);
@@ -134,6 +152,28 @@ namespace OrganizerTask1.UI.ViewModels
             }
 
             editedVM.Update(editedItem);
+
+            RemoveMessageHandlers();
+        }
+
+        private void OnItemValidateRequest(Notification n)
+        {
+            var args = n.GetArgs<NotificationArgsValidateItemSaveRequest>();
+            T vmItem = args.ItemEntity as T;
+
+            if (vmItem == null)
+                return;
+
+            if (FindEntity(vmItem.Model.Id) == null)
+            {
+                if (FindEntity(vmItem.Model.Name) != null)
+                {
+                    _notificationCenter.PostNotification(NotificationName.SAVE_ITEM_VALIDATE_RESPONSE,
+                        new NotificationArgsValidateItemSaveResponse(string.Format("not unique name: {0}! Please, select other name.", vmItem.Model.Name)));
+                    return;
+                }
+            }
+            _notificationCenter.PostNotification(NotificationName.SAVE_ITEM_VALIDATE_RESPONSE, new NotificationArgsValidateItemSaveResponse(""));
         }
 
         #endregion

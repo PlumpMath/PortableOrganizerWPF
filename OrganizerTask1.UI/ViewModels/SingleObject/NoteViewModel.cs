@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using OrganizerTask1.UI.ViewModels.Interfaces;
 using OrganizerTask1.UI.ViewModels.Validation;
 using OrganizerTasks1.Model;
@@ -21,11 +17,6 @@ namespace OrganizerTask1.UI.ViewModels
             Model = note;
             //ErrorsChanged += ErrorsChangedHandler;
             ValidateProperty("Name");
-        }
-
-        public Note NoteModel
-        {
-            get { return _note;}
         }
 
         public string Name

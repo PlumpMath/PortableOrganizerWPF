@@ -42,6 +42,7 @@ namespace OrganizerTask1.UI.Misc
 
             if (handler != null)
             {
+                handler.Invalid = true;
                 notifyList.Remove(handler);
             }
         }
@@ -67,32 +68,24 @@ namespace OrganizerTask1.UI.Misc
                 return;
             }
 
-            List<NotificationHandler> notifyList;
-            notifications.TryGetValue(newNotification.name, out notifyList);
-
-            if (notifyList == null)
+            if (!notifications.ContainsKey(newNotification.name))
             {
-                notifications.Remove(newNotification.name);
                 return;
             }
 
-            var handlersToRemove = new List<NotificationHandler>();
+            var invocationList = new List<NotificationHandler>(notifications[newNotification.name]);
 
-            foreach (var handler in notifyList)
+            foreach (var handler in invocationList)
             {
                 if (handler != null && handler.action != null)
                 {
-                    handler.action.Invoke(newNotification);
+                    if (!handler.Invalid)
+                        handler.action.Invoke(newNotification);
                 }
                 else
                 {
-                    handlersToRemove.Add(handler);
+                    throw new Exception("not valid NotificationHandler");
                 }
-            }
-
-            foreach (var observer in handlersToRemove)
-            {
-                notifyList.Remove(observer);
             }
         }
     }

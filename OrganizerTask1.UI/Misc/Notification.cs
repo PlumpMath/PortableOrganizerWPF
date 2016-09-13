@@ -30,6 +30,7 @@ namespace OrganizerTask1.UI.Misc
     public class NotificationHandler : IEquatable<NotificationHandler>
     {
         public Action<Notification> action;
+        public bool Invalid;
 
         public NotificationHandler(Action<Notification> action)
         {
@@ -51,5 +52,7 @@ namespace OrganizerTask1.UI.Misc
         NOT_SET,
         SHOW_ITEM_EDIT_MODAL,
         CLOSE_ITEM_EDIT_MODAL,
+        SAVE_ITEM_VALIDATE_REQUEST,
+        SAVE_ITEM_VALIDATE_RESPONSE,
     }
 }
