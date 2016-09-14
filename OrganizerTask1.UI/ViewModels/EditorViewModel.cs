@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using OrganizerTask1.UI.Misc;
 using OrganizerTask1.UI.ViewModels.Interfaces;
-using OrganizerTask1.UI.ViewModels.Validation;
 
 namespace OrganizerTask1.UI.ViewModels
 {
@@ -64,11 +63,11 @@ namespace OrganizerTask1.UI.ViewModels
                 if (string.IsNullOrEmpty(args.ErrorMessage))
                 {
                     notificationCenter.PostNotification(NotificationName.CLOSE_ITEM_EDIT_MODAL, new NotificationArgsItemEditModalClose(EditingItem));
-                    RemoveError("ErrorBarMessage", "HasErrors");
+                    ErrorBarMessage = "";
                 }
                 else
                 {
-                    AddError(new ValidationError("ErrorBarMessage", "HasErrors", args.ErrorMessage));
+                    ErrorBarMessage = args.ErrorMessage;
                 }
             }
             else

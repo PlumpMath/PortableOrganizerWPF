@@ -9,10 +9,11 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type viewModels:EditorViewModel}">
-        <Border BorderThickness="2" BorderBrush="#640000FF" Background="Beige">
+        <Border BorderBrush="Transparent" Background="White">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition ></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 
@@ -22,6 +23,12 @@
                     <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Save" Command="{Binding Path=SaveCommand}" />
                     <Button Style="{StaticResource CollectionControlButtonStyle}" Content="Discard" Command="{Binding Path=CloseCommand}"/>
                 </WrapPanel>
+                
+                <StackPanel Orientation="Vertical" Grid.Row="2" Height="Auto" HorizontalAlignment="Stretch" Margin="0" >
+                <TextBox
+                    Text="{Binding Path=ErrorBarMessage, Mode=OneWay}" Background="LightGray" Foreground="Red" FontWeight="Bold"  
+                    TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Top" IsReadOnly="True"/>
+                </StackPanel>
             </Grid>
         </Border>
     </DataTemplate>

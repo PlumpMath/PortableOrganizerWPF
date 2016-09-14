@@ -13,7 +13,8 @@ namespace OrganizerTasks1.Model
             base.HandleCloned(clone);
 
             Task obj = (Task)clone;
-            obj.Description = string.Copy(this.Description);
+            if (Description != null)
+                obj.Description = string.Copy(this.Description);
         }
     }
 

@@ -163,13 +163,16 @@ namespace OrganizerTask1.UI.ViewModels
 
             if (vmItem == null)
                 return;
+            
+            var entityByName = FindEntity(vmItem.Model.Name);
 
-            if (FindEntity(vmItem.Model.Id) == null)
+            if (entityByName != null)
             {
-                if (FindEntity(vmItem.Model.Name) != null)
+                var entityById = FindEntity(vmItem.Model.Id);
+                if (entityById != entityByName)
                 {
                     _notificationCenter.PostNotification(NotificationName.SAVE_ITEM_VALIDATE_RESPONSE,
-                        new NotificationArgsValidateItemSaveResponse(string.Format("not unique name: {0}! Please, select other name.", vmItem.Model.Name)));
+                        new NotificationArgsValidateItemSaveResponse(string.Format("{0} is not unique Name! Please, select other name and retry.", vmItem.Model.Name)));
                     return;
                 }
             }

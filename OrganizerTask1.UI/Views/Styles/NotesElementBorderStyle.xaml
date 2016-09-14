@@ -3,8 +3,8 @@
     <Style x:Key="NoteBorderStyle" TargetType="Border">
         <Style.Resources>
             <LinearGradientBrush x:Key="NoteBackgroundBrush" StartPoint="0.5, 0" EndPoint="0.5, 1">
-                <GradientStop Color="#88000000" Offset="0.1" />
-                <GradientStop Color="#CC000000" Offset="0.9" />
+                <GradientStop Color="#88191919" Offset="0.3" />
+                <GradientStop Color="#CC252323" Offset="0.6" />
             </LinearGradientBrush>
             <LinearGradientBrush x:Key="NoteBorderBrush" StartPoint="0.5, 0" EndPoint="0.5, 1">
                 <GradientStop Color="#18000000" Offset="0.1" />
@@ -12,10 +12,11 @@
             </LinearGradientBrush>
         </Style.Resources>
 
+
         <Setter Property="Background" Value="{StaticResource NoteBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource NoteBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="CornerRadius" Value="3" />
         <Setter Property="Margin" Value="2,4"/>
     </Style>
 </ResourceDictionary>

@@ -7,11 +7,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
-        
-        <DataTemplate.Resources>
-            
-        </DataTemplate.Resources>
-
         <Border x:Name="noteArea" Style="{StaticResource NoteBorderStyle}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -21,7 +16,7 @@
                 
                 <TextBlock Grid.Column="0" x:Name="noteName" 
                            Text="{Binding Name}" 
-                           Margin="6, 6" 
+                           Margin="12, 6" 
                            VerticalAlignment="Top"
                            TextAlignment="Center"
                            Foreground="White" 
@@ -29,7 +24,7 @@
                            />
                 <TextBlock Grid.Column="1" x:Name="noteDescription" 
                            Text="{Binding Description}" 
-                           Margin="6, 6" 
+                           Margin="12, 6" 
                            VerticalAlignment="Center" 
                            Foreground="White" 
                            TextWrapping="Wrap"
